@@ -35,11 +35,11 @@ class ApplicationController < Sinatra::Base
 		#your code here!
 		current_user = User.find_by(username: params[:username])
 
-		if current_user && User.authenticate(params[:password])
-			redirect to '/success'
-			session[:user_id] = current_user.id
+		if user && user.authenticate(params[:password])
+			session[:user_id] = user.id
+			redirect "/success"
 		else
-			redirect to '/error'
+			redirect "/failure"
 		end
 	end
 
