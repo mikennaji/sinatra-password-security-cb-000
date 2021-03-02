@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
 
 		if current_user && User.authenticate(params[:password])
 			redirect to '/success'
-			session[:user_id] = @current_user.id
+			session[:user_id] = current_user.id
 		else
 			redirect to '/error'
 		end
@@ -71,4 +71,3 @@ class ApplicationController < Sinatra::Base
 	end
 
 end
-	
